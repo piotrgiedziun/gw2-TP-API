@@ -4,3 +4,6 @@ Runing:
 Testing:
   python tests.py -v
   python -m doctest tools.py -v
+
+Usage:
+  python run.py
