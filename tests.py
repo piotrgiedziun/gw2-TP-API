@@ -13,7 +13,7 @@ class TradeTest( unittest.TestCase ):
     self.assertEqual(self.tw.get_item(19726).name, "Soft Wood Log")
     
   def testMultipleItems( self ):
-    self.assertEqual(self.tw.get_items([19727, 19726])[0].name, "Soft Wood Log")
+    self.assertEqual(self.tw.get_items([19726, 19727])[19726].name, "Soft Wood Log")
     
   def testTrends( self ):
     self.assertTrue(len(self.tw.get_trends()) > 0)
@@ -32,4 +32,5 @@ class ConnectionManagerTest( unittest.TestCase ):
     self.assertTrue(conn.login())
     
 if __name__ == '__main__':
+  print "make sure you set correct data in config.py"
   unittest.main()

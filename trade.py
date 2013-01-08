@@ -6,10 +6,16 @@ class TradeWorker( object ):
   
   def __init__( self, login_data ):
     self.connnection = ConnectionManager( login_data )
-    #self.connnection.login() 
-    
+  
+  """
+    get trands items
+
+    reuturn dict of objects
+      key - id
+      value - object data
+  """
   def get_trends( self ):      
-    result = []
+    result = {}
     data = self.connnection.request('trends')
   
     if not 'items' in data:
@@ -17,27 +23,37 @@ class TradeWorker( object ):
     
     for item in data['items']:
       if 'name' in data['items'][item]:
-        result.append(obj(data['items'][item]))
+        result[int(data['items'][item]['data_id'])] = obj(data['items'][item])
   
     return result
   
+  """
+    get items by ids
+
+    reuturn dict of objects
+      key - id
+      value - object data
+  """
   def get_items( self, items ):
-    result = []
+    result = {}
     data = self.connnection.request('search', 'ids='+(",".join([str(i) for i in items])))
     
     if not 'results' in data:
       return result
       
-    print data['results']  
-      
     for item in data['results']:
       if 'name' in item:
-        result.append(obj(item))
+        result[int(item['data_id'])] = obj(item)
 
     return result
   
+  """
+    get item by id
+
+    return one object
+  """
   def get_item( self, item_id ):
-    data = self.connnection.request('search', 'ids=19726')
+    data = self.connnection.request('search', 'ids=%d' % (item_id,))
   
     if not 'results' in data:
       return None

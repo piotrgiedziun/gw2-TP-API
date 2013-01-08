@@ -1,8 +1,5 @@
-""" Simple class being responsible for whole data connection"""
-import urllib
-import urllib2
-import cookielib
-import json
+""" Layer being responsible for network communication"""
+import urllib, urllib2, cookielib, json
 
 class ConnectionManager( object ):
   
@@ -21,18 +18,18 @@ class ConnectionManager( object ):
     
     try:
       self.opener.addheaders = [('Referer', 'https://account.guildwars2.com/login')]
-      self.opener.open( self._LOGIN_URL,
+      resp = self.opener.open( self._LOGIN_URL,
         urllib.urlencode({'email' : self._ACCOUNT_EMAIL, 'password' : self._ACCOUNT_PASSWORD})
       )
       self._logged = True
     except urllib2.URLError, e:
       if not hasattr(e, "code"):
-        raise Exception(">> Unkown error occured")
+        raise Exception("Unkown error occurred")
       return e.code
-      
-    #save cookie
-    #self.cj
     
+    if "The account name or password you entered is invalid." in resp.read():
+      return 400
+
     return True
 
   def request( self, page, parms = "", relogin = False ):
@@ -42,13 +39,13 @@ class ConnectionManager( object ):
       return json.loads(resp.read())
     except urllib2.URLError, e:
       if not hasattr(e, "code"):
-        raise Exception("Unkown error occured")
+        raise Exception("Unkown error occurred")
       elif e.code == 401 and not relogin:
         self.login()
         return self.request(page, parms, True)
       elif e.code == 404:
         raise Exception("Server down")
       else:
-        raise Exception("Can't connect to servert")
+        raise Exception("Can't connect to server")
         
     
