@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
-from trade import TradeWorker
-from config import Config
+from gw2api.trade import TradeWorker
+from gw2api.config import Config
   
 def main():
   tw = TradeWorker(Config().getData())
-  
+  print tw.get_item(19726).name
   try:
     print tw.get_item(19726).name
     

@@ -8,14 +8,18 @@ class TradeWorker( object ):
     self.connnection = ConnectionManager( login_data )
   
   """
+    force connection manager to login
+  """
+  def force_login( self ):
+    self.connnection.login()
+
+  """
     get trands items
 
-    reuturn dict of objects
-      key - id
-      value - object data
+    reuturn tuple of objects
   """
   def get_trends( self ):      
-    result = {}
+    result = []
     data = self.connnection.request('trends')
   
     if not 'items' in data:
@@ -23,7 +27,7 @@ class TradeWorker( object ):
     
     for item in data['items']:
       if 'name' in data['items'][item]:
-        result[int(data['items'][item]['data_id'])] = obj(data['items'][item])
+        result.append(obj(data['items'][item]))
   
     return result
   
