@@ -1,0 +1,74 @@
+<!DOCTYPE html>  
+<html lang="en">
+<head> 
+    <title>GW2 - API</title>
+  
+    <link type="text/css" rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" />
+    <link type="text/css" rel="stylesheet" href="public/style.css" />
+
+    <script type="text/template" id="template_item">
+      <div class="item span6">
+        <span class="span2">
+        <img src="<%= url %>" />
+        </span>
+        <span class="span10">
+          <h4><%= name %></h4>
+          <p><%= description %></p>
+        </span>
+      </div>
+    </script>
+
+    <script type="text/template" id="template_main">
+    <div class="jumbotron">
+        <h1>Check me out!</h1>
+        <p class="lead">Well... I'm under construction</p>
+      </div>
+
+      <hr>
+
+      <div id="trend_list" class="row-fluid marketing">
+        Loading...
+      </div>
+    </script>
+   
+</head> 
+
+<body>
+
+<div class="container-narrow">
+
+      <div class="masthead">
+        <ul class="nav nav-pills pull-right">
+          <li class="active"><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+        <h3 class="muted">GW2 - API</h3>
+      </div>
+
+      <hr>
+      <div id="container">
+        Loading...
+      </div>
+      <hr>
+
+      <div class="footer">
+        <p>&copy; 2012</p>
+      </div>
+
+    </div> <!-- /container -->
+</body>
+    <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+    <script type="text/javascript" src="http://underscorejs.org/underscore-min.js"></script>
+    <script type="text/javascript" src="http://backbonejs.org/backbone-min.js"></script>
+    <script type="text/javascript" src="public/app.js"></script>
+
+    <script>
+
+        $(document).ready(function () {
+            var app = new AppRouter();
+            Backbone.history.start();
+        });
+
+    </script>
+</html>
