@@ -2,7 +2,7 @@
 	Befeore running you have to fill email and password fields in config.py
  
 #Dependency:
-	[iLikePizzaPy as back-end](https://github.com/piotrgiedziun/iLikePizzaPy) don't use in production!
+* [iLikePizzaPy](https://github.com/piotrgiedziun/iLikePizzaPy) as back-end - don't use in production!
 
 #Testing:
 	python tests.py -v
@@ -10,7 +10,7 @@
 
 #Usage:
 	python example_site.py
-	backbone.js fron-end
+	# backbone.js fron-end
 
 	python example_worker.py
-	just worker
+	# just worker
