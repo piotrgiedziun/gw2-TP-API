@@ -1,5 +1,5 @@
 #Demo:
-	http://gw2-api.eu01.aws.af.cm/
+http://gw2-api.eu01.aws.af.cm/
 
 #Runing:
 	Befeore running you have to fill email and password fields in config.py
