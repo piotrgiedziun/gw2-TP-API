@@ -1,15 +1,18 @@
+#Demo:
+	http://gw2-api.eu01.aws.af.cm/
+
 #Runing:
 	Befeore running you have to fill email and password fields in config.py
  
 #Dependency:
-* [iLikePizzaPy](https://github.com/piotrgiedziun/iLikePizzaPy) as back-end - don't use in production!
+* django
 
 #Testing:
 	python tests.py -v
 	python -m doctest tools.py -v
 
 #Usage:
-	python example_site.py
+	python manage.py runserver
 	# backbone.js fron-end
 
 	python example_worker.py
